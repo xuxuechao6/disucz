@@ -1,0 +1,81 @@
+<!--{template common/header}-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<div class="content">
+	<div class="left box">
+		<!--{ad/articlelist/mbm hm/1}--><!--{ad/articlelist/mbm hm/2}-->
+		<!--[diy=listcontenttop]--><div id="listcontenttop" class="area"></div><!--[/diy]-->
+		<div class="control">
+			<!--{if ($_G['group']['allowpostarticle'] || $_G['group']['allowmanagearticle'] || $categoryperm[$catid]['allowmanage'] || $categoryperm[$catid]['allowpublish']) && empty($cat['disallowpublish'])}-->
+			<a href="portal.php?mod=portalcp&ac=article&catid=$cat[catid]" class="y xi2 addnew">{lang article_publish}</a>
+			<!--{/if}-->
+		</div>
+
+		<!--{eval $count = DB::fetch_all("
+										SELECT
+											t1.aid,
+											t1.viewnum,
+											t1.commentnum,
+											t3.replies
+										FROM " .DB::table('portal_article_count')." t1
+										LEFT OUTER JOIN ".DB::table('portal_article_title')." t2 ON t1.aid = t2.aid
+										LEFT OUTER JOIN ".DB::table('forum_thread')." t3 ON t2.id = t3.tid",array(),"aid"
+
+		);}-->
+
+
+		<ul class="news" id="news">
+			<!--{loop $list['list'] $value}-->
+			<!--{eval $highlight = article_title_style($value);}-->
+			<!--{eval $article_url = fetch_article_url($value);}-->
+			<li onclick="_hmt.push(['_trackEvent','cms','精彩推荐','28191']);">
+				<h2><a href="$article_url" target="_blank" class="xi2" $highlight>$value[title]</a> <!--{if $value[id] == 1}-->({lang moderate_need})<!--{/if}--></h2>
+				<span>
+					<em class="views">$count[$value[aid]][viewnum]</em>
+					<a href="$article_url" class="replies" target="_blank"><!--{if $value[id]== 0 }-->$count[$value[aid]][commentnum]<!--{else}-->$count[$value[aid]][replies]<!--{/if}--></a>
+					<a href="javascript:;" title="分享到新浪微博" target="_blank" class="share">分享</a>
+				</span>
+				<a href="portal.php?mod=list&catid=$value[catid]" target="_blank">$value[catname]</a> | $value[dateline]
+				<!--{if $_G['group']['allowmanagearticle'] || ($_G['group']['allowpostarticle'] && $value['uid'] == $_G['uid'] && (empty($_G['group']['allowpostarticlemod']) || $_G['group']['allowpostarticlemod'] && $value['status'] == 1)) || $categoryperm[$value['catid']]['allowmanage']}-->
+					<span class="xg1">
+						<span class="pipe">|</span>
+						<label><a href="portal.php?mod=portalcp&ac=article&op=edit&aid=$value[aid]">{lang edit}</a></label>
+						<span class="pipe">|</span>
+						<label><a href="portal.php?mod=portalcp&ac=article&op=delete&aid=$value[aid]" id="article_delete_$value[aid]" onclick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a></label>
+					</span>
+				<!--{/if}-->
+				<!--{if $value[pic]}--><a href="$article_url" target="_blank" class="article_img"><img src="$value[pic]" alt="$value[title]"></a><!--{/if}-->
+				<p>$value[summary]<a href="$article_url" target="_blank">全文》</a></p>
+			</li>
+			<!--{/loop}-->
+		</ul>
+		<!--{ad/articlelist/mbm hm/3}--><!--{ad/articlelist/mbm hm/4}-->
+		<!--{if $list['multi']}--><div class="pages">{$list['multi']}</div><!--{/if}-->
+		<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+	</div>
+	<div class="right">
+		<div class="drag">
+			<!--[diy=diyrighttop]--><div id="diyrighttop" class="area"></div><!--[/diy]-->
+		</div>
+
+		<div class="drag">
+			<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+		</div>
+
+	</div>
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<!--{template common/footer}-->

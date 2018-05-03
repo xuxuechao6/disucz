@@ -1,0 +1,9 @@
+<?php
+// 必加判断，不加审核大人不给过！对吧，审核大人？
+if ( !defined( 'IN_DISCUZ' ) ) {
+	exit( 'Access Denied' );
+}
+getuserprofile( $field );
+$nft_posts = getuserprofile( 'posts' );
+$nft_reposts = getuserprofile( 'posts' ) - getuserprofile( 'threads' );
+?>

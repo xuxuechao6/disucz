@@ -1,0 +1,109 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+<!--{subtemplate common/header_common}-->
+	<meta name="application-name" content="$_G['setting']['bbname']" />
+	<meta name="msapplication-tooltip" content="$_G['setting']['bbname']" />
+	<!--{if $_G['setting']['portalstatus']}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][1]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['portal']) ? 'http://'.$_G['setting']['domain']['app']['portal'] : $_G[siteurl].'portal.php'};icon-uri={$_G[siteurl]}{IMGDIR}/portal.ico" /><!--{/if}-->
+	<meta name="msapplication-task" content="name=$_G['setting']['navs'][2]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['forum']) ? 'http://'.$_G['setting']['domain']['app']['forum'] : $_G[siteurl].'forum.php'};icon-uri={$_G[siteurl]}{IMGDIR}/bbs.ico" />
+	<!--{if $_G['setting']['groupstatus']}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][3]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['group']) ? 'http://'.$_G['setting']['domain']['app']['group'] : $_G[siteurl].'group.php'};icon-uri={$_G[siteurl]}{IMGDIR}/group.ico" /><!--{/if}-->
+	<!--{if helper_access::check_module('feed')}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][4]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['home']) ? 'http://'.$_G['setting']['domain']['app']['home'] : $_G[siteurl].'home.php'};icon-uri={$_G[siteurl]}{IMGDIR}/home.ico" /><!--{/if}-->
+	<!--{if $_G['basescript'] == 'forum' && $_G['setting']['archiver']}-->
+		<link rel="archives" title="$_G['setting']['bbname']" href="{$_G[siteurl]}archiver/" />
+	<!--{/if}-->
+	<!--{if !empty($rsshead)}-->$rsshead<!--{/if}-->
+	<!--{if widthauto()}-->
+		<link rel="stylesheet" id="css_widthauto" type="text/css" href='{$_G['setting']['csspath']}{STYLEID}_widthauto.css?{VERHASH}' />
+		<script type="text/javascript">HTMLNODE.className += ' widthauto'</script>
+	<!--{/if}-->
+	<!--{if $_G['basescript'] == 'forum' || $_G['basescript'] == 'group'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}forum.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'home'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}home.js?{VERHASH}"></script>
+	<!--{elseif $_G['basescript'] == 'portal'}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+	<!--{/if}-->
+	<!--{if $_G['basescript'] != 'portal' && $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
+		<script type="text/javascript" src="{$_G[setting][jspath]}portal.js?{VERHASH}"></script>
+	<!--{/if}-->
+	<!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
+		<link rel="stylesheet" type="text/css" id="diy_common" href="{$_G['setting']['csspath']}{STYLEID}_css_diy.css?{VERHASH}" />
+    <link href="{$_G['style'][tpldir]}/static/css/display.min.css" rel="stylesheet">
+	<!--{/if}-->
+</head>
+
+<body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}{if $_G['basescript'] === 'portal' && CURMODULE === 'list' && !empty($cat)} {$cat['bodycss']}{/if}" onkeydown="if(event.keyCode==27) return false;">
+	<div id="append_parent"></div><div id="ajaxwaitid"></div>
+	<!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
+		<!--{template common/header_diy}-->
+	<!--{/if}-->
+	<!--{if check_diy_perm($topic)}-->
+		<!--{template common/header_diynav}-->
+	<!--{/if}-->
+	<!--{if CURMODULE == 'topic' && $topic && empty($topic['useheader']) && check_diy_perm($topic)}-->
+		$diynav
+	<!--{/if}-->
+	<!--{if empty($topic) || $topic['useheader']}-->
+	<header>
+		<nav class="navbar navbar-default size-sm">
+			<div class="container">
+				<div class="collapse navbar-collapse">
+					<!--{hook/global_cpnav_top}-->
+					<ul class="nav navbar-nav">
+						<!--{loop $_G['setting']['topnavs'][0] $nav}-->
+						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li>$nav[code]</li><!--{/if}-->
+						<!--{/loop}-->
+						<!--{hook/global_cpnav_extra1}-->
+						<!--{hook/global_cpnav_extra2}-->
+						<!--{loop $_G['setting']['topnavs'][1] $nav}-->
+						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
+						<!--{/loop}-->
+						<li class="dropdown" id="topnavs_right">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">更多...</a>
+							<ul class="dropdown-menu">
+								<!--{hook/global_cpnav_extra2}-->
+								<!--{loop $_G['setting']['topnavs'][1] $nav}-->
+								<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li>$nav[code]</li><!--{/if}-->
+								<!--{/loop}-->
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<!--{if check_diy_perm($topic)}-->$diynav<!--{/if}-->
+						<!--{subtemplate common/header_qmenu}-->
+						<!--{if !empty($_G['setting']['plugins']['jsmenu'])}-->
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">插件</a>
+							<ul class="dropdown-menu">
+							<!--{loop $_G['setting']['plugins']['jsmenu'] $module}-->
+							<!--{if !$module['adminid'] || ($module['adminid'] && $_G['adminid'] > 0 && $module['adminid'] >= $_G['adminid'])}-->
+							<li>$module[url]</li>
+							<!--{/if}-->
+							<!--{/loop}-->
+							</ul>
+						</li>
+						<!--{/if}-->
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="collapse navbar-collapse">
+					<!--{eval $mnid = getcurrentnav();}-->
+					<ul class="nav navbar-nav">
+						<!--{loop $_G['setting']['navs'] $nav}-->
+						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="active" {/if}$nav[nav]></li><!--{/if}-->
+						<!--{/loop}-->
+					</ul>
+					<!--{hook/global_nav_extra}-->
+					<!--{template common/header_userstatus}-->
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!--{subtemplate common/template_switch}-->
+	<!--{subtemplate common/header_banner}-->
+	<!--{ad/headerbanner/wp a_h}-->
+	<!--{ad/subnavbanner/a_mu}-->
+	<!--{hook/global_header}-->
+	<!--{/if}-->
+	<div id="wp" class="{if $_G['basescript'] == 'forum' && empty($_G['mod'])}container{else}wp{/if}">

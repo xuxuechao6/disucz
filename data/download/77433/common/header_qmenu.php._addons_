@@ -1,0 +1,25 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+					<li class="dropdown" id="qmenu_menu">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><!--{lang my_nav}--></a>
+						<!--{hook/global_qmenu_top}-->
+						<!--{if $_G['uid']}-->
+						<ul class="dropdown-menu qmenu">
+							<!--{loop $_G['setting']['mynavs'] $nav}-->
+							<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
+							<li><!--{$nav[code]}--></li>
+							<!--{/if}-->
+							<!--{/loop}-->
+						</ul>
+						<!--{elseif $_G[connectguest]}-->
+						<ul class="dropdown-menu">
+							<li><a href="member.php?mod=connect" target="_blank" title="{lang qqconnect:connect_member_register_button_tip}">请先 {lang qqconnect:connect_register_profile}</a></li>
+							<li><a href="member.php?mod=connect&ac=bind" target="_blank" title="{lang qqconnect:connect_member_loginbind_button_tip}">或者 {lang qqconnect:connect_register_bind}</a></li>
+						</ul>
+						<!--{else}-->
+						<ul class="dropdown-menu">
+							<li><a href="member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}" onclick="showWindow('login', this.href);return false;">需要 {lang login} 后才能使用哟！</a></li>
+							<li><a href="member.php?mod={$_G[setting][regname]}">没有帐号？点击$_G['setting']['reglinkname']</a></li>
+						</ul>
+						<!--{/if}-->
+						<!--{hook/global_qmenu_bottom}-->
+					</li>

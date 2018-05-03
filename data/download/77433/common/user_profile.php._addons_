@@ -1,0 +1,59 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+		<div class="panel panel-default user-profile">
+  		<div class="panel-body">
+				<!--{if $_G['uid']}-->
+        <div class="user-info">
+					<div class="user-avatar" style="background-image:url({$_G['setting'][ucenterurl]}/avatar.php?uid={$_G[uid]}&size=big)"></div>
+		      <div class="user-name">
+						<a href="home.php?mod=space&uid=$_G[uid]" title="{lang visit_my_space}"><!--{if $_G['setting']['connect']['allow'] && $_G[member][conisbind]}--><i class="wt-qq"></i> <!--{else}--><i class="wt-u-alias"></i> <!--{/if}--><!--{$_G[member][username]}--></a>
+		        <a class="user-logout" href="member.php?mod=logging&action=logout&formhash={FORMHASH}" title="{lang logout}"><!--{lang logout}--></a>
+		      </div>
+					<a class="user-group" href="home.php?mod=spacecp&ac=usergroup" tooltip="on">Lv. <!--{$_G[group][grouptitle]}--><!--{if $_G[member]['freeze']}--> <!--{lang freeze}--><!--{/if}--></a>
+        </div>
+				<ul class="user-credit">
+					<!--{eval include TPLDIR.'/include/profile.php';}-->
+					<li><a href="home.php?mod=spacecp&ac=credit&showcredit=1"><!--{$_G[member][credits]}--><span><!--{lang credits}--></span></a></li>
+		      <li><a href="{if CURMODULE != 'follow'}home.php?mod=space&uid=$space[uid]&do=thread&view=me&type=thread&from=space{else}home.php?mod=space&uid=$space[uid]&view=thread{/if}"><!--{$nft_posts}--><span>主题</span></a></li>
+			    <li><a href="{if CURMODULE != 'follow'}home.php?mod=space&uid=$space[uid]&do=thread&view=me&type=reply&from=space{else}home.php?mod=space&uid=$space[uid]&view=thread&type=reply{/if}"><!--{$nft_reposts}--><span>回复</span></a></li>
+			    <li><a href="home.php?mod=spacecp" title="设置"><i class="wt-cog"></i><span>设置</span></a></li>
+        </ul>
+				<!--{if $_G['uid']}-->
+				<div class="user-tool-bar btn-group">
+					<a href="forum.php?mod=misc&action=nav" onclick="showWindow('nav', this.href, 'get', 0)" class="btn btn-info btn-block">发表主题</a>
+					<!--{hook/index_nav_extra}-->
+					<a class="btn btn-info" href="forum.php?mod=guide&view=my" title="{lang my_posts}">我的文章</a>
+					<!--{if !empty($_G['setting']['search']['forum']['status'])}-->
+					<a class="btn btn-info" href="forum.php?mod=guide&view=new" title="{lang show_newthreads}">{lang show_newthreads}</a>
+					<!--{/if}-->
+				</div>
+				<!--{/if}-->
+				
+				<!--{elseif !empty($_G['cookie']['loginuser'])}-->
+				<div class="user-info">
+					<div class="user-avatar" style="background-image:url({$_G['setting'][ucenterurl]}/avatar.php?uid=0&size=big)"></div>
+					<div class="user-name"><!--{echo dhtmlspecialchars($_G['cookie']['loginuser'])}--> <a class="user-logout" href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)"><!--{lang activation}--></a> <a class="user-logout" href="member.php?mod=logging&action=logout&formhash={FORMHASH}"><!--{lang logout}--></a></div>
+				</div>
+				<!--{elseif !$_G[connectguest]}-->
+				<div class="user-info">
+					<div class="user-avatar user-avatar-extend" style="background-image:url({$_G['setting'][ucenterurl]}/avatar.php?uid=0&size=big)"></div>
+					<div class="user-name">你好！游客！欢迎访问！</div>
+          <div class="btn-group">
+						<a class="btn btn-danger btn-sm" href="member.php?mod={$_G[setting][regname]}"><!--{$_G['setting']['reglinkname']}--></a>
+						<a class="btn btn-info btn-sm" href="member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}" onclick="showWindow('login', this.href);return false;"><!--{lang login}--></a>
+					</div>
+				</div>
+				<!--{else}-->
+				<div class="user-info">
+					<div class="user-avatar" style="background-image: url({$_G['setting'][ucenterurl]}/avatar.php?uid=0&size=big))"></div>
+					<div class="user-name">
+						<a href="home.php?mod=space&uid=$_G[uid]" title="{lang visit_my_space}"><!--{$_G[member][username]}--></a>
+						<a class="user-logout" href="member.php?mod=logging&action=logout&formhash={FORMHASH}"><!--{lang logout}--></a>
+					</div>
+					<a class="user-group" href="home.php?mod=spacecp&ac=usergroup">Lv. <!--{$_G[group][grouptitle]}--></a>
+          <div class="btn-group">
+						<!--{hook/global_usernav_extra1}-->
+          </div>
+				</div>
+				<!--{/if}-->
+			</div>
+		</div>

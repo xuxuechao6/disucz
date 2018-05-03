@@ -1,0 +1,33 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+	<!--{eval include TPLDIR.'/include/banner.php';}-->
+	<div class="banner"{if $_G['basescript'] == 'portal' && empty($_G['mod']) && !empty($_G['style']['bannervideo']) || $_G['basescript'] == 'forum' && empty($_G['mod']) && !empty($_G['style']['bannervideo'])} vide="on" data-vide-bg="{$_G['style']['bannervideo']}" data-vide-options="posterType: none, muted: false, position: 0% 10%" style="background-image: none"{/if}>
+		<div class="container-fluid">
+			<div class="site-info">
+				<!--{if $member['avatarstatus'] == 0}-->
+				<span class="site-title">
+					<a href="{if $_G['setting']['domain']['app']['default']}http://{$_G['setting']['domain']['app']['default']}/{else}./{/if}" title="$_G['setting']['bbname']"><!--{$_G['setting']['sitename']}--></a>
+					<!--{if $_G['uid'] == 1}--><br><small>上传你的头像后，将显示在上方。<a class="btn btn-default edit-btn" href="/home.php?mod=spacecp&ac=avatar"><i class="wt-pencil"></i></a></small><!--{/if}-->
+				</span>
+				<!--{else}-->
+				<span class="site-logo">
+					<a class="user-avatar" href="{if $_G['setting']['domain']['app']['default']}http://{$_G['setting']['domain']['app']['default']}/{else}./{/if}" title="$_G['setting']['bbname']" style="background-image: url({$_G['setting'][ucenterurl]}/avatar.php?uid=1&size=big)">
+					</a>
+					<!--{if $_G['uid'] == 1}--><a class="btn btn-default edit-btn" href="/home.php?mod=spacecp&ac=avatar"><i class="wt-pencil"></i></a><!--{/if}-->
+				</span>
+				<span class="site-title">
+					<a href="{if $_G['setting']['domain']['app']['default']}http://{$_G['setting']['domain']['app']['default']}/{else}./{/if}" title="$_G['setting']['bbname']"><!--{$_G['setting']['sitename']}--></a>
+				</span>
+				<!--{/if}-->
+				<p class="site-description">
+					<!--{if empty($member_profile['bio'])}-->
+					博客主很懒，还没更新个人资料里面的自我介绍！
+					<!--{if $_G['uid'] == 1}--><br><small>修改你资料里的个人介绍，将显示在上方。<a class="btn btn-default edit-btn" href="/home.php?mod=spacecp&ac=profile&op=info"><i class="wt-pencil"></i></a></small><!--{/if}-->
+					<!--{else}-->
+					<!--{$member_profile['bio']}-->
+					<!--{if $_G['uid'] == 1}--> <a class="btn btn-default edit-btn" href="/home.php?mod=spacecp&ac=profile&op=info"><i class="wt-pencil"></i></a><!--{/if}-->
+					<!--{/if}-->
+				</p>
+			</div>
+			<!--{subtemplate common/pubsearchform}-->
+		</div>
+	</div>

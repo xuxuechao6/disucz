@@ -1,0 +1,97 @@
+#tcpip_thread: PACKET 2000580c
+tcpip_thread: PACKET 20005814
+TCP header:
++-------------------------------+
+|    54974      |     2003      | (src port, dest port)
++-------------------------------+
+|           2665255277          | (seq no)
++-------------------------------+
+|           0000000000          | (ack no)
++-------------------------------+
+|  8 |   |000010|      8192     | (hdrlen, flags (SYN 
+), win)
++-------------------------------+
+|    0xbe61     |         0     | (chksum, urgp)
++-------------------------------+
+tcp_input: packed for LISTENing connection.
+TCP connection request 54974 -> 2003.
+tcp_parseopt: MSS
+tcp_parseopt: NOP
+tcp_parseopt: other
+tcp_parseopt: NOP
+tcp_parseopt: NOP
+tcp_parseopt: other
+tcp_enqueue_flags: queueing 6510:6511 (0x12)
+tcp_output_segment: 6510:6510
+tcpip_thread: PACKET 2000580c
+TCP header:
++-------------------------------+
+|    54974      |     2003      | (src port, dest port)
++-------------------------------+
+|           2665255278          | (seq no)
++-------------------------------+
+|           0000006511          | (ack no)
++-------------------------------+
+|  5 |   |010000|     64240     | (hdrlen, flags (ACK 
+), win)
++-------------------------------+
+|    0x0ac5     |         0     | (chksum, urgp)
++-------------------------------+
++-+-+-+-+-+-+-+-+-+-+-+-+-+- tcp_input: flags ACK 
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+State: SYN_RCVD
+TCP connection established 54974 -> 2003.
+tcp_receive: window update 64240
+tcp_receive: ACK for 6511, unacked->seqno 6510:6511
+tcp_receive: removing 6510:6511 from pcb->unacked
+tcp_output: nothing to send (00000000)
+State: ESTABLISHED
+port 3 connected, open uart3...
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_output: nothing to send (00000000)
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_output: nothing to send (00000000)
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcpip_thread: PACKET 20005814
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_output: nothing to send (00000000)
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcpip_thread: API message 200080f4
+tcp_write(pcb=20005834, data=20008158, len=1, apiflags=1)
+tcp_write: queueing 6511:6512
+tcp_output_segment: 6511:6512
+applications\portserver.c 352: portserver_thread nw_tx event 8...
+tcpip_thread: PACKET 20005930
+TCP header:
++-------------------------------+
+|    54974      |     2003      | (src port, dest port)
++-------------------------------+
+|           2665255278          | (seq no)
++-------------------------------+
+|           0000006512          | (ack no)
++-------------------------------+
+|  5 |   |010000|     64239     | (hdrlen, flags (ACK 
+), win)
++-------------------------------+
+|    0x0ac5     |         0     | (chksum, urgp)
++-------------------------------+
++-+-+-+-+-+-+-+-+-+-+-+-+-+- tcp_input: flags ACK 
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+State: ESTABLISHED
+tcp_receive: window update 64239
+tcp_receive: ACK for 6512, unacked->seqno 6511:6512
+tcp_receive: removing 6511:6512 from pcb->unacked
+

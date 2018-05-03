@@ -1,0 +1,37 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+	<!-- 扩展风格 切换 -->
+	<!--{if $_G['basescript'] == 'home' && $_GET['mod'] == 'spacecp'}-->
+	<!--{else}-->
+	<!--{if !$_GET['mod'] == 'logging' || !$_GET['action'] == 'login'}-->
+	<!-- 上面判断：不是登陆页面才显示 -->
+	<div class="switch-box">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">风格颜色 - 切换</h3>
+			</div>
+			<!--{if !empty($_G['style']['extstyle'])}-->
+			<div class="panel-body">
+				<ul id="sslct_menu">
+					<!--{if !$_G[style][defaultextstyle]}--><li class="sslct_btn"{if !$_G['uid']} onclick="showDialog('你还没有登陆，不能进行切换！', 'confirm', '操作失败', 'parent.location.href=\'member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}\'', 1)"{else} onclick="extstyle('')"{/if} title="{lang default}"><i></i></li><!--{/if}-->
+					<!--{loop $_G['style']['extstyle'] $extstyle}-->
+					<li class="sslct_btn"{if !$_G['uid']} onclick="showDialog('你还没有登陆，不能进行切换！', 'confirm', '操作失败', 'parent.location.href=\'member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}\'', 1)"{else} onclick="extstyle('$extstyle[0]')"{/if} title="$extstyle[1]"><i style='background:$extstyle[2]'></i></li>
+					<!--{/loop}-->
+				</ul>
+			</div>
+			<!--{else}-->
+			<div class="panel-body">
+				<p>抱歉，当前没有风格</p>
+			</div>
+			<!--{/if}-->
+      <!--{if $_G['setting']['switchwidthauto']}-->
+			<div class="panel-footer">
+				<a href="javascript:;" id="switchwidth"{if !$_G['uid']} onclick="showDialog('你还没有登陆，不能进行切换！', 'confirm', '操作失败', 'parent.location.href=\'member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}\'', 1)"{else} onclick="widthauto(this)"{/if}><!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}--></a>
+			</div>
+      <!--{/if}-->
+		</div>
+		<div class="switch-toggle">
+			<div class="switch-toggle-ico"></div>
+		</div>
+	</div>
+	<!--{/if}-->
+	<!--{/if}-->

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[zxsq_markdown.plugin]]></item>
+	<item id="RevisionID"><![CDATA[52798]]></item>
+	<item id="SN"><![CDATA[20180417177LaCa57cga]]></item>
+	<item id="RevisionDateline"><![CDATA[1521684001]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_zxsq_markdown_SC_UTF8.xml"><![CDATA[a6f383f033336ad8ba7ee949fa242aa2]]></item>
+		<item id="/tools/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/tools/parsedown/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/tools/parsedown/ExtParsedown.php"><![CDATA[2fa4e7cfdc684179bb62512b4f41e017]]></item>
+		<item id="/tools/parsedown/Parsedown.php"><![CDATA[1e3ea9721a11cf2aa28c39a3996c6bf9]]></item>
+		<item id="/js/portal-markdown.js"><![CDATA[9b96edd55da886abcc2a36340460e295]]></item>
+		<item id="/js/tocbot.min.js"><![CDATA[1876bfddf78600c5371253dc56ec8a3d]]></item>
+		<item id="/discuz_plugin_zxsq_markdown_TC_UTF8.xml"><![CDATA[87f4497d6d00de0cd18d9416a1f631b6]]></item>
+		<item id="/markdown.class.php"><![CDATA[9b5fb0cefbcd35a06e458d27d1cc19e2]]></item>
+		<item id="/template/mobile/markdown.htm"><![CDATA[5de73f193a062a251b35bd564ce67b8f]]></item>
+		<item id="/template/mobile/error.htm"><![CDATA[09374ea2b4767f0877e35a20bbb87e15]]></item>
+		<item id="/template/mobile/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/template/markdown.htm"><![CDATA[5de73f193a062a251b35bd564ce67b8f]]></item>
+		<item id="/template/error.htm"><![CDATA[09374ea2b4767f0877e35a20bbb87e15]]></item>
+		<item id="/template/touch/markdown.htm"><![CDATA[5de73f193a062a251b35bd564ce67b8f]]></item>
+		<item id="/template/touch/error.htm"><![CDATA[09374ea2b4767f0877e35a20bbb87e15]]></item>
+		<item id="/template/touch/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/template/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/discuz_plugin_zxsq_markdown_SC_GBK.xml"><![CDATA[0af117ea84e3cd8cfa147a28e122a762]]></item>
+		<item id="/css/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/css/markdown.css"><![CDATA[ca6478d36cd5203e723d8d4b4673dd70]]></item>
+		<item id="/css/tocbot.min.css"><![CDATA[c57da162b1baaeda1d298af5cecc7bdb]]></item>
+		<item id="/discuz_plugin_zxsq_markdown_TC_BIG5.xml"><![CDATA[cca941dc07c246ad8b592f4244282b48]]></item>
+		<item id="/function/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/function/markdown.php"><![CDATA[169234de68f83dcecb6291920a7100a6]]></item>
+	</item>
+</root>

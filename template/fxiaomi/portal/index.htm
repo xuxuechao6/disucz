@@ -1,0 +1,187 @@
+<!--{template common/header}-->
+<!--{eval require './source/function/function_post.php';}-->
+<!--{eval require './config/config_global.php';}-->
+<style id="diy_style" type="text/css"></style>
+<div id="append_parent"></div>
+<div class="wp">
+    <!--[diy=diy1]-->
+    <div id="diy1" class="area"></div><!--[/diy]-->
+    <div class="xiaomi cl">
+        <div class="mn">
+            <!--[diy=diylefttop]-->
+            <div id="diylefttop" class="area"></div>
+            <!--[/diy]-->
+            <div class="theme">
+                <!--{eval $prefix=$_config['db']['1']['tablepre'] }-->
+                <!--{eval $type = $_G['gp_type'];}-->
+                <div class="theme_con">
+                    <div class="theme_nav">
+                        <a href="portal.php" class="theme_nav_list <!--{if !$type}-->current<!--{/if}-->">最新回复</a>
+                        <a href="portal.php?type=1" class="theme_nav_list <!--{if $type}-->current<!--{/if}-->">最新主题</a>
+                        <a href="forum.php?mod=misc&action=nav" onclick="showWindow('nav', this.href, 'get', 0)" class="btnn theme_nav_btn">发表新主题</a>
+                    </div>
+                    <!--{eval $pagesize = 20;}-->
+                    <!--{if $type}-->
+                    <!--{eval $amount=0;}-->
+
+                    <!--{eval $count = DB::fetch_all("
+                    SELECT
+                        count(*) AS count
+                    FROM "
+                        .DB::table('forum_thread'). " t1
+                    LEFT OUTER JOIN " .DB::table('forum_threadclass')." t2 ON t1.typeid = t2.typeid
+                    LEFT OUTER JOIN ".DB::table('forum_forumrecommend')." t3 ON t1.tid = t3.tid
+                    WHERE
+                        t1.displayorder >= 0
+                    AND t3.moderatorid <> ''
+                    ");}-->
+                    <!--{eval $amount=$count[0]['count'];}-->
+                    <!--{eval $pagecount = $amount ? (($amount < $pagesize) ? 1 : (($amount % $pagesize) ? ((int)($amount / $pagesize) + 1) : ($amount / $pagesize))) : 0; }-->
+                    <!--{eval $page = !empty($_G['gp_page']) ? max(1, intval($_G['gp_page'])) : 1;}-->
+                    <!--{eval $page = $page > $pagecount ? 1 : $page;}-->
+                    <!--{eval $startlimit = ($page - 1) * $pagesize;}-->
+                    <!--{eval $multipage = multi($amount, $pagesize, $page, 'portal.php?type=1&', $pagecount);}-->
+                    <!--{eval $res = DB::fetch_all("SELECT
+                                                     t1.tid,
+                                                     t1.fid,
+                                                     t1.typeid,
+                                                     t1.authorid,
+                                                     t1.author,
+                                                     t2.`name` AS typename,
+                                                     t1.`subject`,
+                                                     t1.dateline AS dateline,
+                                                     t1.views,
+                                                     t1.replies,
+                                                     t1.special,
+                                                     t1.attachment,
+                                                     t1.digest,
+                                                     t1.displayorder,
+                                                     t1.heats,
+                                                     t3.moderatorid,
+                                                     t1.highlight,
+                                                     t1.bgcolor
+                                                 FROM
+                                                     ".DB::table('forum_thread')." t1
+                                                 LEFT OUTER JOIN ".DB::table('forum_threadclass')." t2 ON t1.typeid = t2.typeid
+                                                 LEFT OUTER JOIN ".DB::table('forum_forumrecommend')." t3 ON t1.tid = t3.tid
+                                                 WHERE
+                                                     t1.displayorder >= 0
+                                                 ORDER BY
+                                                     t1.dateline DESC LIMIT $startlimit, $pagesize");}-->
+                    <!--{else}-->
+                    <!--{eval $amount=0;}-->
+                    <!--{eval $count = DB::fetch_all("select count(*) as count from " .DB::table('forum_thread')." t1 where t1.displayorder>=0;");}-->
+                    <!--{eval $amount=$count[0]['count'];}-->
+
+
+                    <!--{eval $pagecount = $amount ? (($amount < $pagesize) ? 1 : (($amount % $pagesize) ? ((int)($amount / $pagesize) + 1) : ($amount / $pagesize))) : 0; }-->
+                    <!--{eval $page = !empty($_G['gp_page']) ? max(1, intval($_G['gp_page'])) : 1;}-->
+                    <!--{eval $page = $page > $pagecount ? 1 : $page;}-->
+                    <!--{eval $startlimit = ($page - 1) * $pagesize;}-->
+                    <!--{eval $multipage = multi($amount, $pagesize, $page, 'portal.php?', $pagecount);}-->
+                    <!--{eval $res = DB::fetch_all("SELECT
+                                                    t1.tid,
+                                                    t1.fid,
+                                                    t1.typeid,
+                                                    t1.authorid,
+                                                    t1.author,
+                                                    t2.`name` AS typename,
+                                                    t1.`subject`,
+                                                    t1.lastpost AS dateline,
+                                                    t1.views,
+                                                    t1.replies,
+                                                    t1.special,
+                                                    t1.attachment,
+                                                    t1.digest,
+                                                    t1.displayorder,
+                                                    t1.heats,
+                                                    t3.moderatorid,
+                                                    t1.highlight,
+                                                    t1.bgcolor
+                                                FROM
+                                                    ".DB::table('forum_thread')." t1
+                                                LEFT OUTER JOIN ".DB::table('forum_threadclass')." t2 ON t1.typeid = t2.typeid
+                                                LEFT OUTER JOIN ".DB::table('forum_forumrecommend')." t3 ON t1.tid = t3.tid
+                                                WHERE
+                                                    t1.displayorder >= 0
+                                                ORDER BY
+                                                    t1.lastpost DESC LIMIT $startlimit, $pagesize");}-->
+                    <!--{/if}-->
+                    <!--{loop $res $key $thread}-->
+                    <ul>
+                        <li id="thread_$thread[tid]">
+                            <div class="theme_list_img">
+                                <a href="home.php?mod=space&uid=$thread[authorid]" class="user_name">
+                                   {echo avatar($thread[authorid], 'small')}
+                                </a>
+                            </div>
+                            <div class="theme_list_con">
+                                <div class="title">
+                                    <!--{eval $colorarray= array('', '#EE1B2E', '#EE5023', '#996600', '#3C9D40', '#2897C5', '#2B65B7', '#8F2A90', '#EC1282');}-->
+                                    <a href="forum.php?mod=viewthread&tid=$thread[tid]" target="_blank" class="title_name"<!--{if $thread['highlight']}--> style="<!--{if $thread['highlight']}-->color:$colorarray[$thread['highlight']];<!--{/if}--><!--{if $thread['bgcolor']}-->background-color:$thread['bgcolor'];<!--{/if}-->"<!--{/if}--> >$thread[subject]</a>
+                                    <!--{if $thread['special'] == 1}-->
+                                    <img class="stamp" src="{$_G['style']['styleimgdir']}/pollsmall.png" />
+                                    <!--{elseif $thread['special'] == 2}-->
+                                    <img class="stamp" src="{$_G['style']['styleimgdir']}/tradesmall.png" />
+                                    <!--{elseif $thread['special'] == 3}-->
+                                    <img class="stamp" src="{$_G['style']['styleimgdir']}/rewardsmall.png" />
+                                    <!--{elseif $thread['special'] == 4}-->
+                                    <img class="stamp" src="{$_G['style']['styleimgdir']}/activitysmall.png" />
+                                    <!--{elseif $thread['special'] == 5}-->
+                                    <img class="stamp" src="{IMGDIR}/debatesmall.gif"/>
+                                    <!--{/if}-->
+
+                                    <!--{if $thread['attachment'] == 2}-->
+                                    <img src="{$_G['style']['styleimgdir']}/image_s.png" alt="attach_img"  align="absmiddle" />
+                                    <!--{elseif $thread['attachment'] == 1}-->
+                                    <img src="{STATICURL}image/filetype/common.gif" alt="attachment" align="absmiddle" />
+                                    <!--{/if}-->
+                                    <!--{if $thread['digest']}-->
+                                    <img src="{$_G['style']['styleimgdir']}/digest_$thread[digest].png" align="absmiddle" alt="digest" />
+                                    <!--{/if}-->
+
+                                    <!--{if $thread[heats]}-->
+                                    <!--{if $thread[heats]>3}-->
+                                    <!--{eval $thread[heats]=3}-->
+                                    <!--{/if}-->
+                                    <img src="{$_G['style']['styleimgdir']}/hot_$thread[heats].png" align="absmiddle" alt="heatlevel" />
+                                    <!--{/if}-->
+                                    <!--{if $thread[moderatorid]}-->
+                                    <img src="{$_G['style']['styleimgdir']}/recommend.png" align="absmiddle" alt="recommend" />
+                                    <!--{/if}-->
+
+                                 </div>
+                                <div class="auth_msg cl">
+                                    <a  href="home.php?mod=space&uid=$thread[authorid]" class="user_name" target="_blank">$thread[author]</a>
+								<span class="time txt">
+                                <!--{eval echo date('Y-m-d H:i:s',$thread[dateline]);}-->
+                                </span>
+                                    <a href="forum.php?mod=forumdisplay&fid=$thread[fid]&filter=typeid&typeid=$thread[typeid]" class="time txt">$thread[typename]</a>
+                                    <!--{if in_array($thread['displayorder'], array(1, 2, 3, 4))}-->
+                                    <span class="stick txt">·{lang stick}</span>
+                                    <!--{/if}-->
+                                    <span class="numb msg"><i></i><a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra" class="xi2">$thread[replies]</a></span>
+                                    <span class="numb view"><i></i>$thread[views]</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--{/loop}-->
+                    <div class="base_widget_paging">
+                        <div id="pag">$multipage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sd">
+            <!--[diy=diyrighttop]-->
+            <div id="diyrighttop" class="area"></div>
+            <!--[/diy]-->
+            <!--[diy=diyrightbottom]-->
+            <div id="diyrightbottom" class="area"></div>
+            <!--[/diy]-->
+        </div>
+    </div>
+</div>
+<script src="misc.php?mod=diyhelp&action=get&type=index&diy=yes&r={echo random(4)}" type="text/javascript"></script>
+<!--{template common/footer}-->

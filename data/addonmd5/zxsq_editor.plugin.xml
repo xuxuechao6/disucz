@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[zxsq_editor.plugin]]></item>
+	<item id="RevisionID"><![CDATA[74166]]></item>
+	<item id="SN"><![CDATA[2018041810nk6ONuySLV]]></item>
+	<item id="RevisionDateline"><![CDATA[1522202401]]></item>
+	<item id="Data">
+		<item id="/css/btn.min.css"><![CDATA[a7689dba473397e68e9eebd338878a82]]></item>
+		<item id="/css/btn.png"><![CDATA[e3d133baf557022554a6c88638b13964]]></item>
+		<item id="/css/compatible_chrome.png"><![CDATA[62865d1b320de643a107c7df7be889cb]]></item>
+		<item id="/css/compatible_firefox.png"><![CDATA[5ac2fe75f6ea214a9e9071e293fcb30e]]></item>
+		<item id="/css/compatible_opera.png"><![CDATA[e8d7563914ad7b5fa2d4699e9117ab85]]></item>
+		<item id="/css/compatible_safari.png"><![CDATA[95335d2b9cf3c2a4362730afff2843e6]]></item>
+		<item id="/css/incompatible_ie.png"><![CDATA[295715ae830913834289300244750926]]></item>
+		<item id="/discuz_plugin_zxsq_editor_SC_GBK.xml"><![CDATA[37e769050bfd456fe212394e7c4cfe74]]></item>
+		<item id="/discuz_plugin_zxsq_editor_SC_UTF8.xml"><![CDATA[2deab46e5f3fa4a5a7d388b75cbe5df1]]></item>
+		<item id="/discuz_plugin_zxsq_editor_TC_BIG5.xml"><![CDATA[0a258107385b42a0b912a6c543d4d201]]></item>
+		<item id="/discuz_plugin_zxsq_editor_TC_UTF8.xml"><![CDATA[54c751f046ffcaf8141ed9a528c10785]]></item>
+		<item id="/editor.class.php"><![CDATA[0031da2d975e09f261179a7eee80ff9b]]></item>
+		<item id="/js/btn.min.js"><![CDATA[12ac732ea07c704b1b5690cbdd882cb6]]></item>
+		<item id="/libs/ace/ace.js"><![CDATA[f07920b863c3badc02dd03d59a9b7d7d]]></item>
+		<item id="/libs/ace/mode-asciidoc.js"><![CDATA[05f199c950d31e0f4d78939a5a2a3aa5]]></item>
+		<item id="/libs/ace/mode-dot.js"><![CDATA[44e00a9548aa537ebd5771c09c0996a3]]></item>
+		<item id="/libs/ace/mode-markdown.js"><![CDATA[354265fd75aa3faa0db01da00a1854f4]]></item>
+		<item id="/libs/ace/theme-github.js"><![CDATA[9d7d9e2a3daa52aedc7c350f29547275]]></item>
+		<item id="/slide.inc.php"><![CDATA[80d5e6958adb303be8b534f3503f70b8]]></item>
+		<item id="/template/btn.htm"><![CDATA[82e79b6f375568011e4af601d36f060e]]></item>
+		<item id="/template/index.htm"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+	</item>
+</root>

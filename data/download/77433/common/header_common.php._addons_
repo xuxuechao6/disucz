@@ -1,0 +1,27 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+<!DOCTYPE html>
+<html lang="{$_G['config']['output']['language']}">
+<head>
+    <meta charset="{CHARSET}">
+    <title><!--{if !empty($navtitle)}--><!--{$navtitle}--> - <!--{/if}--><!--{if empty($nobbname)}--> <!--{$_G['setting']['bbname']}--> - <!--{/if}--> Powered by <!--{$_G['setting']['sitename']}--></title>
+    <!--{$_G['setting']['seohead']}-->
+    <meta name="keywords" content="{if !empty($metakeywords)}{echo dhtmlspecialchars($metakeywords)}{/if}" />
+    <meta name="description" content="{if !empty($metadescription)}{echo dhtmlspecialchars($metadescription)} {/if}{if empty($nobbname)},$_G['setting']['bbname']{/if}" />
+    <meta name="generator" content="Discuz! {$_G['setting']['version']}" />
+    <meta name="author" content="Template By NFTStudio UI Team" />
+    <meta name="copyright" content="{eval echo date(Y);} © {$_G['setting']['sitename']}" />
+    <meta name="MSSmartTagsPreventParsing" content="True" />
+    <meta http-equiv="MSThemeCompatible" content="Yes" />
+    <base href="{$_G['siteurl']}" />
+    <link href="{$_G['style'][tpldir]}/static/css/nprogress.min.css" rel="stylesheet">
+    <link href="{$_G['style'][tpldir]}/static/css/windtalker.min.css" rel="stylesheet">
+    <link href="{$_G['style'][tpldir]}/static/css/lollipop.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{$_G['style'][tpldir]}/static/js/html5shiv.min.js"></script>
+    <script src="{$_G['style'][tpldir]}/static/js/respond.min.js"></script>
+    <![endif]-->
+    <!--{csstemplate}-->
+    <script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]', CSSPATH = '$_G[setting][csspath]', DYNAMICURL = '$_G[dynamicurl]';</script>
+    <script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+    <!--{if empty($_GET['diy'])}--><!--{eval $_GET['diy'] = '';}--><!--{/if}-->
+    <!--{if !isset($topic)}--><!--{eval $topic = array();}--><!--{/if}-->

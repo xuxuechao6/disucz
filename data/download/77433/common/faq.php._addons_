@@ -1,0 +1,95 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+<!--{template common/header}-->
+		<ol class="breadcrumb">
+			<li><a href="./" title="{lang homepage}"><i class="wt-home"></i> <!--{$_G[setting][bbname]}--></a></li>
+			<!--{if empty($_GET[action])}-->
+			<li class="active"><!--{lang faq}--></li>
+			<!--{else}-->
+			<li><a href="misc.php?mod=faq"><!--{lang faq}--></a></li>
+				<!--{if $_GET['mod'] == 'faq' && $_GET['action'] == 'search'}-->
+					<!--{if !empty($_GET[action])}-->
+					<li class="active"><!--{lang keyword_faq}--></li>
+					<!--{/if}-->
+				<!--{else}-->
+				<li class="active"><!--{$ctitle}--></li>
+				<!--{/if}-->
+			<!--{/if}-->
+		</ol>
+		<div id="ct" class="row faq-page">
+			<div class="col-md-9">
+				<form method="post" autocomplete="off" action="misc.php?mod=faq&action=search" class="input-group">
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="searchtype" value="all" />
+					<input type="text" name="keyword" size="16" value="$keyword" class="form-control" placeholder="输入需要帮助的关键词..." />
+					<span class="input-group-btn">
+						<button name="searchsubmit" class="btn btn-default" value="yes" type="submit"><i class="wt-search-alias"></i> {lang search}</button>
+					</span>
+				</form>
+				<!--{if empty($_GET[action])}-->
+				<div class="panel panel-default">
+					<div class="panel-heading">{lang all}{lang faq}</div>
+					<div class="list-group">
+						<!--{loop $faqparent $fpid $parent}-->
+						<a href="misc.php?mod=faq&action=faq&id=$fpid" class="list-group-item">$parent[title]</a>
+						<!--{loop $faqsub[$parent[id]] $sub}-->
+						<a href="misc.php?mod=faq&action=faq&id=$sub[fpid]&messageid=$sub[id]" class="list-group-item">$sub[title]</a></li>
+						<!--{/loop}-->
+						<!--{/loop}-->
+					</div>
+				</div>
+				<!--{elseif $_GET[action] == 'faq'}-->
+				<div class="panel-group" id="faq-accordion" role="tablist" aria-multiselectable="true">
+					<!--{loop $faqlist $faq}-->
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="heading$faq[id]">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#messageid$faq[id]" aria-expanded="true" aria-controls="messageid$faq[id]">
+									{$faq[title]}
+								</a>
+							</h4>
+						</div>
+						<div id="messageid$faq[id]" class="panel-collapse collapse{if $messageid == $faq[id]} in{/if}" role="tabpanel" aria-labelledby="heading$faq[id]">
+							<div class="panel-body">
+								{$faq[message]}
+							</div>
+						</div>
+					</div>
+					<!--{/loop}-->
+				</div>
+				<!--{elseif $_GET[action] == 'search'}-->
+				<div class="panel panel-default">
+					<div class="panel-heading">{lang keyword_faq}</div>
+					<div class="panel-body">
+						<!--{if $faqlist}-->
+						<!--{loop $faqlist $faq}-->
+						<h3>$faq[title]</h3>
+						<div>$faq[message]</div>
+						<!--{/loop}-->
+						<!--{else}-->
+						<p>{lang faq_search_nomatch}</p>
+						<!--{/if}-->
+					</div>
+				</div>
+				<!--{elseif $_GET[action] == 'plugin' && !empty($_GET['id'])}-->
+				<!--{eval include(template($_GET['id']));}-->
+				<!--{/if}-->
+			</div>
+			<div class="col-md-3">
+				<div class="list-group">
+					<div class="list-group-item list-group-item-title">
+						{lang faq}
+					</div>
+					<a href="misc.php?mod=faq" class="list-group-item{if empty($_GET[action])} active{/if}">{lang all}</a>
+					<!--{loop $faqparent $fpid $parent}-->
+					<a href="misc.php?mod=faq&action=faq&id=$fpid" name="$parent[title]" class="list-group-item{if $_GET[id] == $fpid} active{/if}">$parent[title]</a>
+					<!--{/loop}-->
+					<!--{if !empty($_G['setting']['plugins']['faq'])}-->
+					<!--{loop $_G['setting']['plugins']['faq'] $id $module}-->
+					<a href="misc.php?mod=faq&action=plugin&id=$id" class="list-group-item{if $_GET[id] == $id} active{/if}">$module[name]</a>
+					<!--{/loop}-->
+					<!--{/if}-->
+				</div>
+				<!--{hook/faq_extra}-->
+			</div>
+		</div>
+<!--{template common/footer}-->

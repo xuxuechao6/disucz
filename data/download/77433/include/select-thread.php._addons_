@@ -1,0 +1,17 @@
+<?php
+// 必加判断，不加审核大人不给过！对吧，审核大人？
+if ( !defined( 'IN_DISCUZ' ) ) {
+	exit( 'Access Denied' );
+}
+$threada = C::t( 'forum_attachment' )->fetch_all_by_id( 'tid', $thread[ 'tid' ], 'aid' );
+$threadaid = reset( $threada );
+$threadpic = C::t( 'forum_attachment_n' )->fetch_by_aid_uid( $threadaid[ 'tableid' ], $threadaid[ 'aid' ], $thread[ 'authorid' ] );
+$thread[ 'pic' ] = $threadpic[ 'attachment' ];
+$colorarray = array( '', '#EE1B2E', '#EE5023', '#996600', '#3C9D40', '#2897C5', '#2B65B7', '#8F2A90', '#EC1282' );
+$big_forum = DB::fetch_first( "SELECT ff2.* FROM pre_forum_thread ft LEFT JOIN pre_forum_forum ff ON ft.fid = ff.fid LEFT JOIN pre_forum_forum ff2 ON ff2.fid = ff.fup WHERE ft.tid=$thread[tid]" );
+$big[ 'name' ] = '<span class="label label-none">' . $big_forum[ 'name' ] . '</span>';
+$cur_forum = C::t( 'forum_forum' )->fetch_info_by_fid( $thread[ 'fid' ] );
+$small[ 'name' ] = $cur_forum[ 'name' ];
+require_once( DISCUZ_ROOT . "./source/function/function_post.php" );
+$thread_excerpt = messagecutstr( DB::result_first( 'SELECT `message` FROM ' . DB::table( 'forum_post' ) . ' WHERE `tid` =' . $thread[ tid ] . ' AND `first` =1' ), 420 );
+?>

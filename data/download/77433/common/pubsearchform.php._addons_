@@ -1,0 +1,70 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+								<!--{if $_G['setting']['search']}-->
+								<!--{eval $slist = array();}-->
+								<!--{if $_G['fid'] && $_G['forum']['status'] != 3 && $mod != 'group'}--><!--{block slist[forumfid]}--><li><a href="javascript:;" rel="curforum" fid="$_G[fid]" >{lang search_this_forum}</a></li><!--{/block}--><!--{/if}-->
+								<!--{if $_G['setting']['portalstatus'] && $_G['setting']['search']['portal']['status'] && ($_G['group']['allowsearch'] & 1 || $_G['adminid'] == 1)}--><!--{block slist[portal]}--><li><a href="javascript:;" rel="article">{lang article}</a></li><!--{/block}--><!--{/if}-->
+								<!--{if $_G['setting']['search']['forum']['status'] && ($_G['group']['allowsearch'] & 2 || $_G['adminid'] == 1)}--><!--{block slist[forum]}--><li><a href="javascript:;" rel="forum" class="curtype">{lang thread}</a></li><!--{/block}--><!--{/if}-->
+								<!--{if helper_access::check_module('blog') && $_G['setting']['search']['blog']['status'] && ($_G['group']['allowsearch'] & 4 || $_G['adminid'] == 1)}--><!--{block slist[blog]}--><li><a href="javascript:;" rel="blog">{lang blog}</a></li><!--{/block}--><!--{/if}-->
+								<!--{if helper_access::check_module('album') && $_G['setting']['search']['album']['status'] && ($_G['group']['allowsearch'] & 8 || $_G['adminid'] == 1)}--><!--{block slist[album]}--><li><a href="javascript:;" rel="album">{lang album}</a></li><!--{/block}--><!--{/if}-->
+								<!--{if $_G['setting']['groupstatus'] && $_G['setting']['search']['group']['status'] && ($_G['group']['allowsearch'] & 16 || $_G['adminid'] == 1)}--><!--{block slist[group]}--><li><a href="javascript:;" rel="group">$_G['setting']['navs'][3]['navname']</a></li><!--{/block}--><!--{/if}-->
+								<!--{block slist[user]}--><li><a href="javascript:;" rel="user">{lang users}</a></li><!--{/block}-->
+								<!--{/if}-->
+				<!--{if $_G['setting']['search'] && $slist}-->
+				<div id="scbar" class="navbar-form">
+					<form id="scbar_form" method="{if $_G[fid] && !empty($searchparams[url])}get{else}post{/if}" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="{if $_G[fid] && !empty($searchparams[url])}$searchparams[url]{else}search.php?searchsubmit=yes{/if}" target="_blank">
+						<input type="hidden" name="mod" id="scbar_mod" value="search" />
+						<input type="hidden" name="formhash" value="{FORMHASH}" />
+						<input type="hidden" name="srchtype" value="title" />
+						<input type="hidden" name="srhfid" value="$_G[fid]" />
+						<input type="hidden" name="srhlocality" value="$_G['basescript']::{CURMODULE}" />
+						<!--{if !empty($searchparams[params])}-->
+						<!--{loop $searchparams[params] $key $value}-->
+						<!--{eval $srchotquery .= '&' . $key . '=' . rawurlencode($value);}-->
+						<input type="hidden" name="$key" value="$value" />
+						<!--{/loop}-->
+						<input type="hidden" name="source" value="discuz" />
+						<input type="hidden" name="fId" id="srchFId" value="$_G[fid]" />
+						<input type="hidden" name="q" id="cloudsearchquery" value="" />
+						<div style="display: none; position: absolute; top:37px; left:44px;" id="sg">
+							<div id="st_box" cellpadding="2" cellspacing="0"></div>
+						</div>
+						<!--{/if}-->
+						<div class="form-group">
+							<input type="text" class="form-control" name="srchtxt" id="scbar_txt" value="" placeholder="{lang enter_content}" autocomplete="off" x-webkit-speech speech />
+						</div>
+						<div class="dropdown">
+							<button class="btn btn-default dropdown-toggle" id="scbar_type" hidefocus="true" type="button" data-toggle="dropdown">{lang search}</button>
+							<ul class="dropdown-menu" id="scbar_type_menu">
+								<!--{echo implode('', $slist);}-->
+							</ul>
+						</div>
+						<button type="submit" name="searchsubmit" id="scbar_btn" sc="1" class="btn btn-default" value="true"><i class="wt-search-alias"></i> {lang search}</button>
+					</form>
+					<!--{if $_G['setting']['srchhotkeywords']}-->
+					<div id="scbar_hot">
+						<strong>{lang hot_search}: </strong>
+						<span>
+						<!--{if count($_G['setting']['srchhotkeywords']) > 5}-->{lang hot_search}词语不能超过5个！
+						<!--{else}-->
+						<!--{loop $_G['setting']['srchhotkeywords'] $val}-->
+						<!--{if $val=trim($val)}-->
+						<!--{eval $valenc=rawurlencode($val);}-->
+						<!--{block srchhotkeywords[]}-->
+						<!--{if !empty($searchparams[url])}-->
+						<a href="$searchparams[url]?q=$valenc&source=hotsearch{$srchotquery}" target="_blank" sc="1">$val</a>
+						<!--{else}-->
+						<a href="search.php?mod=forum&srchtxt=$valenc&formhash={FORMHASH}&searchsubmit=true&source=hotsearch" target="_blank" sc="1">$val</a>
+						<!--{/if}-->
+						<!--{/block}-->
+						<!--{/if}-->
+						<!--{/loop}-->
+						<!--{echo implode('', $srchhotkeywords);}-->
+						<!--{/if}-->
+						</span>
+					</div>
+					<!--{/if}-->
+				</div>
+				<script type="text/javascript">
+					initSearchmenu('scbar', '$searchparams[url]');
+				</script>
+				<!--{/if}-->

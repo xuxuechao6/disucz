@@ -1,0 +1,45 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+
+	<div class="user-app">
+		<a href="#" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="鼓励逆风"><i class="wt-server"></i></a>
+		<!--{if $_G['setting']['site_qq']}--><a href="http://wpa.qq.com/msgrd?v=3&uin=$_G['setting']['site_qq']&site=$_G['setting']['bbname']&menu=yes&from=discuz" target="_blank" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="客服QQ"><i class="wt-qq"></i></a><!--{/if}-->
+		<!--{if $_G[fid] && $_G['mod'] == 'forumdisplay' || $_G[fid] && $_G['mod'] == 'viewthread'}--><a onclick="{if !$_G['forum']['allowspecialonly'] && empty($_G['forum']['picstyle']) && !$_G['forum']['threadsorts']['required']}showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=$_G[fid]'){else}location.href='forum.php?mod=post&action=newthread&fid=$_G[fid]';return false;{/if}" href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="快速发帖"><i class="wt-write"></i></a><!--{/if}-->
+		<!--{if $_G[fid] && $_G['mod'] == 'viewthread'}--><a href="forum.php?mod=post&action=reply&fid=$_G[fid]&tid=$_G[tid]&extra=$_GET[extra]&page=$page{if $_GET[from]}&from=$_GET[from]{/if}" onclick="showWindow('reply', this.href)" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="{lang fastreply}"><i class="wt-pencil"></i></a><!--{/if}-->
+		<!--{if $_G[fid]}-->
+		<!--{if $_G['mod'] == 'viewthread'}-->
+		<a href="forum.php?mod=forumdisplay&fid=$_G[fid]" hidefocus="true" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="{lang return_list}"><i class="wt-undo-alias"></i></a>
+		<!--{else}-->
+		<a href="forum.php" hidefocus="true" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="{lang return_forum}"><i class="wt-undo-alias"></i></a>
+		<!--{/if}-->
+		<!--{/if}-->
+	</div>
+	<div class="modal fade" id="sponsor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+					<h4 class="modal-title">扫一扫，鼓励逆风</h4>
+				</div>
+				<div class="modal-body">
+					<div class="tabs-box">
+						<ul class="nav nav-tabs" id="sponsorTabs" role="tablist">
+							<li role="presentation" class="active"><a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true">支付宝鼓励</a></li>
+							<li role="presentation"><a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay">微信鼓励</a></li>
+						</ul>
+						<div class="tab-content" id="sponsorTabContent">
+							<div class="tab-pane fade in active" role="tabpanel" id="alipay" aria-labelledby="alipay-tab">
+								<img src="{$_G['style'][tpldir]}/static/images/alipay.png" alt="支付宝赞助">
+							</div>
+							<div class="tab-pane fade" role="tabpanel" id="wechatpay" aria-labelledby="wechatpay-tab">
+								<img src="{$_G['style'][tpldir]}/static/images/wechatpay.png" alt="微信赞助">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">朕不想理你！</button>
+				</div>
+			</div>
+		</div>
+	</div>

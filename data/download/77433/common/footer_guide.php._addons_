@@ -1,0 +1,63 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+
+		<div class="footer-guide">
+			<div class="container">
+				<div class="row">
+					<div class="flex-box flex-top">
+						<div class="flex-cols-4">
+							<div class="flex-cols-box">
+								<div class="panel panel-default">
+									<div class="panel-heading"><i class="wt-headset"></i> 在线帮助</div>
+									<ul class="list-group">
+										<!--{if $_G['setting']['site_qq']}--><li class="list-group-item"><a href="http://wpa.qq.com/msgrd?v=3&uin=$_G['setting']['site_qq']&site=$_G['setting']['bbname']&menu=yes&from=discuz" target="_blank"><i class="wt-qq"></i> $_G['setting']['site_qq']</a></li><!--{/if}-->
+										<li class="list-group-item"><i class="wt-letter"></i> nftstudio@yeah.net</li>
+										<li class="list-group-item"><i class="wt-telephone"></i> 13778178411</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="flex-cols-4">
+							<div class="flex-cols-box">
+								<div class="panel panel-default">
+									<div class="panel-heading"><i class="wt-extend-alias"></i> 扩展中心</div>
+									<ul class="list-group">
+										<a class="list-group-item" href="#">网站设计</a>
+										<a class="list-group-item" href="#">网站开发</a>
+										<a class="list-group-item" href="#">风格定制</a>
+										<a class="list-group-item" href="#">标志设计</a>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="flex-cols-4">
+							<div class="flex-cols-box">
+								<div class="panel panel-default">
+									<div class="panel-heading"><i class="wt-rudder"></i> 快捷导航</div>
+									<ul class="list-group">
+										<!--{hook/global_qmenu_top}-->
+										<!--{loop $_G['setting']['mynavs'] $nav}-->
+										<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->
+										<li class="list-group-item q-menu"><!--{$nav[code]}--></li>
+										<!--{/if}-->
+										<!--{/loop}-->
+										<!--{hook/global_qmenu_bottom}-->
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="flex-cols-4">
+							<div class="flex-cols-box">
+								<div class="panel panel-default">
+									<div class="panel-heading"><i class="wt-expression"></i> 关注逆风</div>
+									<ul class="list-group">
+										<a href="#" class="list-group-item"><i class="wt-kydyork"></i> 关于逆风</a>
+										<a href="#" class="list-group-item"><i class="wt-weibo"></i> 逆风微博</a>
+										<a href="#" class="list-group-item"><i class="wt-server"></i> 鼓励逆风</a>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

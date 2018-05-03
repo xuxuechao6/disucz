@@ -1,0 +1,54 @@
+<!--{block return}-->
+<style type="text/css">
+#jia_fanhuidb_a {position:fixed;right:6px; height: 112px; width: 40px;opacity:0; z-index: 999; -webkit-transition: bottom 1s; -moz-transition: bottom 1s; -ms-transition: bottom 1s; -o-transition: bottom 1s; transition: bottom 1s; }
+.floatbtns{position:fixed;top:50%;right:6px;z-index:99;width:40px;opacity:{$this->yesopacity};background-color:#fff}.floatbtns a{display:block;height:40px;width:40px;background:url(source/plugin/jia_fanhuidb/template/siicon.png) no-repeat;margin-bottom:1px}.floatbtns a.shopfloatbtn{background-position:-415px -148px}.floatbtns a.favoritefloatbtn{background-position:-144px -68px}.floatbtns a.rechargefloatbtn{background-position:-144px -108px}.floatbtns a.rechargefloatbtnn{background-position:-144px -191px;)}.floatbtns #two-dimensioncode{position:relative}.floatbtns #two-dimensioncode .fimg{position:absolute;display:block;width:160px;height:160px;left:-164px;top:0;display:none}.floatbtns .servicefloatbtn{position:relative}.floatbtns .servicefloatbtn>a{background-position:-415px -190px}.floatbtns a.returntopbtn{background-position:-144px -191px;display:none}.floatbtns a .text{display:block;width:40px;height:40px;text-align:center;line-height:40px; background-color:{$this->opacity};color:#fff;display:none}.floatbtns a:hover .text{display:block}a:hover{text-decoration:none}#scrolltop {display: none;}.toolbar-item,.toolbar-layer{background:url(source/plugin/jia_fanhuidb/template/weixin.png) no-repeat;}#toolbar{position:fixed;right:6px;bottom:80px;}.toolbar-item{display:block;width:52px;height:52px;margin-top:1px;position:relative;-moz-transition:background-position 1s;-ms-transition:background-position 1s;-o-moz-transition:background-position 1s;-webkit-moz-transition:background-position 1s;transition:background-position 1s;}.toolbar-item:hover .toolbar-layer{opacity:1;filter:alpha(opacity=100);transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);}.toolbar-item-weixin{background-position:0 -798px;}.toolbar-item-weixin:hover{background-position:0 -41px;}.toolbar-item-weixin .toolbar-layer{height:212px;background-position:0 0;}.toolbar-layer{position:absolute;right:36px;bottom:-10px;width:172px;opacity:0;filter:alpha(opacity=0);
+transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 95% 95%;-o-transform-origin: 95% 95%;-webkit-transform-origin: 95% 95%;transform:scale(0.01);
+-moz-transform:scale(0.01);-ms-transform:scale(0.01);-o-transform:scale(0.01);-webkit-transform:scale(0.01);transition:all 1s;-moz-transition:all 1s;-ms-transition:all 1s;-o-transition:all 1s;-webkit-transition:all 1s;}
+</style>
+<div class='floatbtns'>
+<div class='servicefloatbtn'>
+<!--{if $this->sie == global_cpnav_extra1}-->
+<a href='http://wpa.qq.com/msgrd?v=3&uin={$this->jia_fanhuidb_qq}&site=qq&menu=yes' target='_blank'><!--{else}--><a href="{$this->wangwang}" target="_blank"><!--{/if}--><span class='text'>{lang jia_fanhuidb:lang1}</span></a>
+</div>
+<a class='shopfloatbtn' href='{$this->jia_fanhuidb_lian1}'><span class='text'>{$this->jia_fanhuidb_1}</span></a>
+<a class='rechargefloatbtn' href='{$this->jia_fanhuidb_lian2}' target='_blank'><span class='text'>{$this->jia_fanhuidb_2}</span></a>
+   <a href="###" id="two-dimensioncode" class="toolbar-item toolbar-item-weixin">
+   <span class="toolbar-layer" id="text"></span>
+   </a>
+<a class='rechargefloatbtnn' id="jia_fanhuidb_a" ><span class='text'><img src="source/plugin/jia_fanhuidb/template/11.png"></span></a>
+</div>
+<script src="source/plugin/jia_fanhuidb/template/jquery1.4.5.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+var jQuery = jQuery.noConflict();
+ jQuery("#jia_fanhuidb_a").click(function(){
+   var sc=jQuery(window).scrollTop();
+   jQuery('body,html').animate({scrollTop:0},$this->jia_fanhuidb);
+ })
+jQuery(function() {
+jQuery('#jia_fanhuidb_a').css({
+	              opacity:1
+                }); 
+jQuery('#jia_fanhuidb_a').css({
+                   bottom: '-130px'
+                }); 
+    jQuery(window).scroll(function() {
+        
+            if (jQuery(window).scrollTop() > 100) {
+                jQuery('#jia_fanhuidb_a').css({
+                    bottom: '0px'
+                });
+				jQuery('#jia_fanhuidb_a').css({
+                    opacity:1
+                }); 
+            } else {
+                jQuery('#jia_fanhuidb_a').css({
+                    bottom: '-130px'
+                });  
+				jQuery('#jia_fanhuidb_a').css({
+                    opacity:0.3
+                });    
+        }
+    })
+})
+</script>
+<!--{/block}-->

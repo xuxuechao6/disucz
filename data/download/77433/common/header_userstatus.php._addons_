@@ -1,0 +1,103 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+				<!--{if $_G['uid']}-->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="wt-user-alias"></i>
+							<span class="name"><!--{$_G[member][username]}--></span>
+						</a>
+						<ul class="dropdown-menu">
+							<!--{hook/global_usernav_extra1}-->
+							<li><a href="home.php?mod=spacecp&ac=credit&showcredit=1"><!--{lang credits}-->: <!--{$_G[member][credits]}--></a></li>
+							<li><a href="home.php?mod=spacecp&ac=usergroup"><!--{lang usergroup}-->: <!--{$_G[group][grouptitle]}--><!--{if $_G[member]['freeze']}--><!--{lang freeze}--><!--{/if}--></a></li>
+							<li class="divider"></li>
+							<li><a href="home.php?mod=space&uid=$_G[uid]" target="_blank"><!--{if $_G['setting']['connect']['allow'] && $_G[member][conisbind]}--><i class="wt-qq"></i> <!--{else}--><i class="wt-user"></i> <!--{/if}--><!--{lang visit_my_space}--></a></li>
+							<!--{if $_G['group']['allowinvisible']}-->
+							<li id="loginstatus"><a id="loginstatusid" href="member.php?mod=switchstatus" title="{lang login_switch_invisible_mode}" onclick="ajaxget(this.href, 'loginstatus');return false;"></a></li>
+							<!--{/if}-->
+							<li><a href="home.php?mod=spacecp"><!--{lang setup}--></a></li>
+							<li class="divider"></li>
+							<!--{if ($_G['group']['allowmanagearticle'] || $_G['group']['allowpostarticle'] || $_G['group']['allowdiy'] || getstatus($_G['member']['allowadmincp'], 4) || getstatus($_G['member']['allowadmincp'], 6) || getstatus($_G['member']['allowadmincp'], 2) || getstatus($_G['member']['allowadmincp'], 3))}-->
+							<li><a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }--><!--{lang portal_manage}--><!--{else}--><!--{lang portal_block_manage}--><!--{/if}--></a></li>
+							<!--{/if}-->
+							<!--{if $_G['uid'] && $_G['group']['radminid'] > 1}-->
+							<li><a href="forum.php?mod=modcp&fid=$_G[fid]" target="_blank"><!--{lang forum_manager}--></a></li>
+							<!--{/if}-->
+							<!--{if $_G['uid'] && getstatus($_G['member']['allowadmincp'], 1)}-->
+							<li><a href="admin.php" target="_blank"><!--{lang admincp}--></a></li>
+							<!--{/if}-->
+							<!--{hook/global_usernav_extra2}-->
+							<!--{hook/global_usernav_extra3}-->
+							<!--{hook/global_usernav_extra4}-->
+						</ul>
+					</li>
+					<!--{if empty($_G['cookie']['ignore_notice']) && ($_G[member][newpm] || $_G[member][newprompt_num][follower] || $_G[member][newprompt_num][follow] || $_G[member][newprompt]) || $_G['setting']['taskon'] && !empty($_G['cookie']['taskdoing_'.$_G['uid']])}-->
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="label label-danger"></span><i class="wt-message"></i> <!--{lang pm_center}-->
+						</a>
+						<ul class="dropdown-menu">
+							<!--{if !empty($_G[member][newpm])}--><li><a href="home.php?mod=space&do=pm"><span class="label label-danger"></span><!--{lang pm_center}--></a></li><!--{/if}-->
+							<!--{if !empty($_G[member][newprompt_num][follower])}--><li><a href="home.php?mod=follow&do=follower"><span class="label label-danger"></span><!--{lang notice_interactive_follower}--></a></li><!--{/if}-->
+							<!--{if $_G[member][newprompt] && $_G[member][newprompt_num][follow]}--><li><a href="home.php?mod=follow"><span class="label label-danger"></span><!--{lang notice_interactive_follow}--></a></li><!--{/if}-->
+							<!--{if $_G[member][newprompt]}-->
+							<!--{loop $_G['member']['category_num'] $key $val}-->
+							<li><a href="home.php?mod=space&do=notice&view=$key"><span class="label label-danger"></span><!--{echo lang('template', 'notice_'.$key)}--></a></li>
+							<!--{/loop}-->
+							<!--{/if}-->
+							<!--{if $_G['setting']['taskon'] && !empty($_G['cookie']['taskdoing_'.$_G['uid']])}-->
+							<li><a href="home.php?mod=task&item=doing"><span class="label label-danger"></span><!--{lang task_doing}--></a></li>
+							<!--{/if}-->
+						</ul>
+					</li>
+					<!--{/if}-->
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="wt-toolbox"></i> <!--{lang myitem}--></a>
+						<ul class="dropdown-menu">
+							<li><a href="forum.php?mod=guide&view=my"><i class="wt-post"></i> <!--{lang mypost}--></a></li>
+							<li><a href="home.php?mod=space&do=favorite&view=me"><i class="wt-note"></i> <!--{lang favorite}--></a></li>
+							<li><a href="home.php?mod=space&do=friend"><i class="wt-users"></i> <!--{lang friends}--></a></li>
+							<!--{hook/global_myitem_extra}-->
+							<li><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}"><i class="wt-out"></i> {lang logout}</a></li>
+						</ul>
+					</li>
+				</ul>
+        <!--{elseif !empty($_G['cookie']['loginuser'])}-->
+        <ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="avatar" style="background-image:url({$_G['setting'][ucenterurl]}/avatar.php?uid={$_G[uid]}&size=middle)"></span>
+              <span class="name"><!--{echo dhtmlspecialchars($_G['cookie']['loginuser'])}--></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang activation}</a></li>
+              <li><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a></li>
+            </ul>
+					</li>
+        </ul>
+        <!--{elseif !$_G[connectguest]}-->
+				<div class="nav navbar-nav navbar-right">
+					<!--{if $_G['basescript'] == 'member' && $_GET['mod'] == 'logging' && $_GET['action'] == 'login' || $_G['setting']['bbclosed']}-->
+          <a class="btn btn-danger navbar-btn" href="member.php?mod={$_G[setting][regname]}"><!--{$_G['setting']['reglinkname']}--></a>
+          <!--{elseif $_G['basescript'] == 'member' && $_GET['mod'] == $_G[setting][regname] || $_G[setting]['regstatus'] == 2}-->
+          <li><a href="member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}" onclick="showWindow('login', this.href);return false;">欢迎访问 <!--{$_G['setting']['sitename']}-->！</a></li>
+          <!--{else}-->
+          <li><a href="member.php?mod=logging&action=login&referer={echo rawurlencode($dreferer)}" onclick="showWindow('login', this.href);return false;">欢迎访问 <!--{$_G['setting']['sitename']}-->！</a></li>
+          <!--{/if}-->
+        </div>
+				<!--{else}-->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="avatar" style="background-image:url({$_G['setting'][ucenterurl]}/avatar.php?uid={$_G[uid]}&size=middle)"></span>
+							<span class="name"><!--{$_G[member][username]}--></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="home.php?mod=spacecp&ac=credit&showcredit=1">{lang credits}: 0</a></li>
+							<li><a href="home.php?mod=spacecp&ac=usergroup">{lang usergroup}: $_G[group][grouptitle]</a></li>
+							<!--{hook/global_usernav_extra1}-->
+							<li><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!--{/if}-->

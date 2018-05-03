@@ -1,0 +1,10 @@
+<?php exit('拒绝盗版，从自己做起！富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善！未经允许，擅自盗用本风格，将依法追究！');?>
+					<!--{block diynav}-->
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">{lang open_diy}</a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:saveUserdata('diy_advance_mode', '');openDiy();">{lang header_diy_mode_simple}</a></li>
+							<li><a href="javascript:saveUserdata('diy_advance_mode', '1');openDiy();">{lang header_diy_mode_adv}</a></li>
+						</ul>
+					</li>
+					<!--{/block}-->

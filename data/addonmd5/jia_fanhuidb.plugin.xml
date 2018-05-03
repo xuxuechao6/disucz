@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[jia_fanhuidb.plugin]]></item>
+	<item id="RevisionID"><![CDATA[77203]]></item>
+	<item id="SN"><![CDATA[2017110916x5j44XwU5l]]></item>
+	<item id="RevisionDateline"><![CDATA[1508968801]]></item>
+	<item id="Data">
+		<item id="/template/jia_fanhuidb.htm"><![CDATA[66a223562c603ca86c8e2ecef3dd1c5b]]></item>
+		<item id="/template/siicon.png"><![CDATA[bd81bf32cbb98009785cd0cf14b9794e]]></item>
+		<item id="/template/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/template/11.png"><![CDATA[f9c822e2348cc6bdc06e3176c83a0840]]></item>
+		<item id="/template/weixin.png"><![CDATA[52326199c2c8ec971e9aaf0bef11f7c0]]></item>
+		<item id="/template/jquery1.4.5.min.js"><![CDATA[d27360cdac265b12424dcef883b0ccb5]]></item>
+		<item id="/jia_fanhuidb.class.php"><![CDATA[f57c81bb768003e094ec036ceb64ff61]]></item>
+		<item id="/discuz_plugin_jia_fanhuidb_SC_GBK.xml"><![CDATA[fff7397652abf8324707343b99ed2131]]></item>
+		<item id="/discuz_plugin_jia_fanhuidb_SC_UTF8.xml"><![CDATA[fe421c6fff8c3e12268581bf5caa200a]]></item>
+		<item id="/discuz_plugin_jia_fanhuidb_TC_BIG5.xml"><![CDATA[721413940f103ec868b438753c764fc1]]></item>
+		<item id="/addon.inc.php"><![CDATA[34d09f18d0129f56e5f98e45d20539f2]]></item>
+		<item id="/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/discuz_plugin_jia_fanhuidb_TC_UTF8.xml"><![CDATA[26b80775f3193571bdd7bf63c66c03e5]]></item>
+	</item>
+</root>

@@ -1,0 +1,9 @@
+<?php
+// 必加判断，不加审核大人不给过！对吧，审核大人？
+if (!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+$prefix = $_config['db']['1']['tablepre'];
+$type = $_G['gp_type'];
+$pagesize = $_G['style']['page-size'];
+?>

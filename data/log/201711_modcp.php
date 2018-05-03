@@ -1,0 +1,14 @@
+<?PHP exit;?>	1510027141	aozima	2	117.61.9.61	login		2	GET={mod=modcp; fid=2; action=login; }; POST={};
+<?PHP exit;?>	1510027145	aozima	2	117.61.9.61	thread		2	GET={mod=modcp; fid=2; action=thread; }; POST={};
+<?PHP exit;?>	1510717807	admin	1	117.61.1.75	login		3	GET={mod=modcp; fid=3; action=login; }; POST={};
+<?PHP exit;?>	1510717810	admin	1	117.61.1.75	login		3	GET={mod=modcp; action=login; fid=3; }; POST={};
+<?PHP exit;?>	1510717811	admin	1	117.61.1.75	login	threads	3	GET={mod=modcp; action=login; op=threads; fid=3; }; POST={};
+<?PHP exit;?>	1510717844	admin	1	117.61.1.75	login	thread	3	GET={mod=modcp; action=login; op=thread; fid=3; }; POST={};
+<?PHP exit;?>	1510717847	admin	1	117.61.1.75	login	ban	3	GET={mod=modcp; action=login; op=ban; fid=3; }; POST={};
+<?PHP exit;?>	1510717848	admin	1	117.61.1.75	login	threads	3	GET={mod=modcp; action=login; op=threads; fid=3; }; POST={};
+<?PHP exit;?>	1510825958	admin	1	117.61.3.163	login	post		GET={mod=modcp; action=login; op=post; do=search; searchsubmit=1; users=admin; }; POST={};
+<?PHP exit;?>	1510825964	admin	1	117.61.3.163	thread	post		GET={mod=modcp; action=thread; op=post; do=search; searchsubmit=1; users=admin; }; POST={};
+<?PHP exit;?>	1510825975	admin	1	117.61.3.163	thread	post		GET={mod=modcp; action=thread; op=post; do=delete; delete={0=30911; 1=30910; }; deletesubmit=true; nocredit=1; }; POST={do=delete; delete={0=30911; 1=30910; }; deletesubmit=true; nocredit=1; };
+<?PHP exit;?>	1510825978	admin	1	117.61.3.163	home			GET={mod=modcp; action=home; }; POST={};
+<?PHP exit;?>	1510825983	admin	1	117.61.3.163	moderate	threads		GET={mod=modcp; action=moderate; op=threads; }; POST={};
+<?PHP exit;?>	1510825984	admin	1	117.61.3.163	home			GET={mod=modcp; action=home; }; POST={};

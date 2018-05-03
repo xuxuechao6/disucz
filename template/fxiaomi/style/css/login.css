@@ -1,0 +1,108 @@
+a {
+    color: #757575;
+}
+#ct {
+    min-height: 250px !important;
+}
+.login_header {
+    padding-top: 45px;
+    text-align: center;
+    position: relative;
+}
+.login_header img {
+    background-position: 0 -138px;
+    width: 184px;
+    height: 61px;
+    margin: 0 auto;
+    display: block;
+}
+
+.header_tit_txt {
+    font-size: 22px;
+    color: #999;
+    font-weight: normal;
+    padding-top: 19px;
+}
+
+.layout {
+    background-color: #fff;
+    width: 854px;
+    margin: 0 auto 20px;
+    position: relative;
+    min-height: 610px;
+    color:#757575 ;
+}
+.rfm {
+    margin: 0 auto;
+    width: 460px;
+    border-bottom: none;
+}
+.rfmm {
+    margin: 0 auto;
+    width: 460px;
+}
+.rfmm th {
+    padding-right: 10px;
+    width: 10em;
+    text-align: right;
+}
+.rfmm th, .rfmm td {
+    padding: 10px 2px;
+    vertical-align: top;
+    line-height: 24px;
+}
+.rfm input {
+    width: 326px;
+    height: 22px;
+    line-height: 22px;
+    display: block;
+}
+.rfm .p_tip{
+    width: auto;
+}
+.login_bottom{
+    position: absolute;
+    bottom: 20px;
+    left: 350px;
+}
+.login_bottom a{
+    padding: 0 9px;
+    font-size: 14px;
+}
+.footerbg{
+    background: none;
+}
+#ft{
+    padding: 20px 0;
+}
+.login_header .back{
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    height: 30px;
+    width: 78px;
+    cursor: pointer;
+    background: #f2f2f2;
+    color: #999;
+    font-size: 13px;
+    border-radius: 5px;
+}
+.login_header .loginnow{
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 40px;
+}
+.mbw hr.l{
+   display: none;
+}
+.mbw{
+    margin-bottom: 40px !important;
+}
+.btn_rfm{
+    margin-bottom: 10px !important;
+}
+#use_qzone_avatar_qqshow{
+    width: auto !important;
+}

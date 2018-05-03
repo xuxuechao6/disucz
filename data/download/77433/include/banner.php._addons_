@@ -1,0 +1,8 @@
+<?php
+// 必加判断，不加审核大人不给过！对吧，审核大人？
+if (!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+$member = C::t('common_member')->fetch(1);
+$member_profile = C::t('common_member_profile')->fetch(1);
+?>

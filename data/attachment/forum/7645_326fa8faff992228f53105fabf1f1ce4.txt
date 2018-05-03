@@ -1,0 +1,163 @@
+mem test pass!!
+
+ \ | /
+- RT -     Thread Operating System
+ / | \     1.2.0 build Sep 14 2015
+ 2006 - 2013 Copyright by rt-thread team
+DM9000A inited!
+dm9000 id: 0x90000a46
+finsh>>operating at 100M full duplex mode
+lwIP-1.4.1 initialized!
+tcp
+--function:
+tcp_demo_init    -- startup tcp server
+finsh>>tcp_demo_init()
+        0, 0x00000000
+finsh>>lwip_socket(PF_INET, SOCK_STREAM, 0) = 0
+lwip_setsockopt(0, IPPROTO_TCP, TCP_NODELAY) -> on
+lwip_setsockopt(0, SOL_SOCKET, UNIMPL: optname=0x4, ..)
+lwip_setsockopt(0, SOL_SOCKET, UNIMPL: optname=0x200, ..)
+lwip_bind(0, addr=0.0.0.0 port=8000)
+tcp_bind: bind to port 8000
+lwip_bind(0) succeeded
+lwip_listen(0, backlog=3)
+
+TCPServer Waiting for client on port 8000...
+lwip_accept(0)...
+TCP connection request 1520 -> 8000.
+TCP connection established 1520 -> 8000.
+lwip_accept(0) returning new sock=1 addr=192.168.1.84 port=1520
+lwip_accept(0)...
+I got a connection from (IP: 192.168.1.84 ,PORT: 1520)
+lwip_send(1, data=08026f54, size=34, flags=0x0)
+lwip_send(1) err=0 written=34
+lwip_recvfrom(1, 68002764, 1024, 0x0, ..)
+lwip_recvfrom: top while sock->lastdata=00000000
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+lwip_recvfrom: netconn_recv err=0, netbuf=68002b70
+lwip_recvfrom: buflen=32 len=1024 off=0 sock->lastoffset=0
+lwip_recvfrom(1): addr=192.168.1.84 port=1520 len=32
+lwip_recvfrom: deleting netbuf=68002b70
+tcp_recved: recveived 32 bytes, wnd 2920 (0).
+RECIEVED DATA = http://www.cmsoft.cn QQ:10865600 from IP: 192.168.1.84 ,PORT: 1520)
+lwip_send(1, data=08026f54, size=34, flags=0x0)
+lwip_send(1) err=0 written=34
+lwip_recvfrom(1, 68002764, 1024, 0x0, ..)
+lwip_recvfrom: top while sock->lastdata=00000000
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+TCP connection request 1522 -> 8000.
+TCP connection established 1522 -> 8000.
+lwip_accept(0) returning new sock=2 addr=192.168.1.84 port=1522
+lwip_accept(0)...
+I got a connection from (IP: 192.168.1.84 ,PORT: 1522)
+lwip_send(2, data=08026f54, size=34, flags=0x0)
+lwip_send(2) err=0 written=34
+lwip_recvfrom(2, 68003550, 1024, 0x0, ..)
+lwip_recvfrom: top while sock->lastdata=00000000
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+TCP connection request 1523 -> 8000.
+TCP connection established 1523 -> 8000.
+lwip_accept(0) returning new sock=3 addr=192.168.1.84 port=1523
+lwip_accept(0)...
+I got a connection from (IP: 192.168.1.84 ,PORT: 1523)
+lwip_send(3, data=08026f54, size=34, flags=0x0)
+lwip_send(3) err=0 written=34
+lwip_recvfrom(3, 6800433c, 1024, 0x0, ..)
+lwip_recvfrom: top while sock->lastdata=00000000
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: processing active pcb
+tcp_slowtmr: polling application
+tcp_slowtmr: processing active pcb
+tcp_recved: recveived 1 bytes, wnd 2920 (0).
+lwip_recvfrom: netconn_recv err=-12, netbuf=00000000
+lwip_recvfrom(3): buf == NULL, error is "Connection closed."!
+lwip_close(3)
+tcp_close: closing in State: CLOSE_WAIT
+ClTCP connection closed: LAST_ACK 1523 -> 8000.
+tcp_pcb_purge
+i_pcb_purge
+closedpsr: 0x21000000
+r00: 0x20006518
+r01: 0x10000000
+r02: 0xf0000000
+r03: 0x00000020
+r04: 0xb7b6b5b4
+r05: 0x680042a8
+r06: 0x00000000
+r07: 0x00000000
+r08: 0xdeadbeef
+r09: 0xdeadbeef
+r10: 0xdeadbeef
+r11: 0xdeadbeef
+r12: 0x0800c2f5
+ lr: 0x0800ab61
+ pc: 0x0800ab60
+hard fault on thread: tidle
+
+ thread  pri  status      sp     stack size max used   left tick  error
+-------- ---- ------- ---------- ---------- ---------- ---------- ---
+pth02    0x18 close   0x0000006c 0x00000800 0x000001d4 0x00000001 000
+pth01    0x18 suspend 0x000001c0 0x00000800 0x000001c0 0x00000003 000
+pth00    0x18 suspend 0x000001c4 0x00000800 0x000001c4 0x00000004 000
+tcp_demo 0x14 suspend 0x00000160 0x00000800 0x00000190 0x0000000e 000
+tcpip    0x0c suspend 0x000000dc 0x00001000 0x00000204 0x00000007 000
+tshell   0x14 suspend 0x0000008c 0x00001000 0x000001b4 0x00000009 000
+etx      0x0e suspend 0x0000009c 0x00000800 0x0000009c 0x00000010 000
+erx      0x0e suspend 0x00000090 0x00000800 0x000000c0 0x0000000f 000
+tidle    0x1f ready   0x00000058 0x00000200 0x0000005c 0x0000001c 000
+led      0x14 suspend 0x0000007c 0x00000200 0x0000007c 0x00000005 000
+bus fault:
+SCB_CFSR_BFSR:0x82 PRECISERR SCB->BFAR:B7B6B5D4
